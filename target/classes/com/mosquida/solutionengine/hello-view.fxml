@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:controller="com.mosquida.solutionengine.HelloController" prefHeight="428.0" prefWidth="347.0" style="-fx-background-color: #fff;"
+            xmlns="http://javafx.com/javafx"
+
+            xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="35.0" text="Decimal to IEEE754">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="44.0" layoutY="65.0" onAction="#onHelloButtonClick" text="Single Precision" />
+      <Button layoutX="44.0" layoutY="98.0" onAction="#onHelloButtonClick" text="Double Precision" />
+      <Label layoutX="14.0" layoutY="153.0" text="Root Finding">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="180.0" text="Bracket Method" />
+      <Button layoutX="42.0" layoutY="207.0" onAction="#onHelloButtonClick" text="Bisection Method" />
+      <Button layoutX="42.0" layoutY="240.0" onAction="#onHelloButtonClick" text="False Position Method" />
+      <Label layoutX="41.0" layoutY="284.0" text="Open Method" />
+      <Button layoutX="42.0" layoutY="311.0" onAction="#onHelloButtonClick" text="Newton Rapson Method" />
+      <Button layoutX="42.0" layoutY="344.0" onAction="#onHelloButtonClick" text="Secant Method" />
+      <Label fx:id="welcomeText" layoutX="254.0" layoutY="44.0" />
+   </children>
+</AnchorPane>
