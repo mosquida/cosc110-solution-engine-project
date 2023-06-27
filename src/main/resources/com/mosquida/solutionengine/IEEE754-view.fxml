@@ -5,6 +5,6 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.SinglePrecision">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.IEEE754">
    <Label fx:id="welcomeText"  layoutX="88.0" layoutY="53.0" text="Label"/>
 </AnchorPane>
