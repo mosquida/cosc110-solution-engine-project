@@ -20,6 +20,7 @@ public class HelloController {
 
             Stage stage = new Stage();
             stage.setTitle("Single and Double Precision IEEE754 Conversion");
+            stage.setResizable(false);
             stage.setScene(new Scene(root1));
             stage.show();
         } catch (Exception e) {
@@ -36,6 +37,7 @@ public class HelloController {
             Stage stage = new Stage();
             stage.setTitle("Bisection and False Method Solver");
             stage.setScene(new Scene(root1));
+            stage.setResizable(false);
             stage.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -51,6 +53,7 @@ public class HelloController {
             Stage stage = new Stage();
             stage.setTitle("Newton Raphson Method Solver");
             stage.setScene(new Scene(root1));
+            stage.setResizable(false);
             stage.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -66,6 +69,7 @@ public class HelloController {
             Stage stage = new Stage();
             stage.setTitle("Secant Method Solver");
             stage.setScene(new Scene(root1));
+            stage.setResizable(false);
             stage.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());
