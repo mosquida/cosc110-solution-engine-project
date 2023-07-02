@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ResourceBundle;
 import org.mariuszgromada.math.mxparser.*;
@@ -21,6 +22,9 @@ public class BracketMethod implements Initializable {
 
     @FXML
     private TextField precision_input;
+
+    @FXML
+    private TextField decimal_input;
 
     @FXML
     private TextField root_x_input;
@@ -58,10 +62,9 @@ public class BracketMethod implements Initializable {
     @FXML
     private TableView<TableBisectionModel> table;
 
-    ObservableList<TableBisectionModel> bisectionList = FXCollections.observableArrayList(
-            new TableBisectionModel("1", "1", "2", "34", "3","3","3"),
-            new TableBisectionModel("1", "1", "2", "34", "3","3","3")
-    );
+    ObservableList<TableBisectionModel> bisectionList = FXCollections.observableArrayList();
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -94,42 +97,92 @@ public class BracketMethod implements Initializable {
         return true;
     }
 
+
+
     @FXML
     void onSolveClick() {
-        // Sample Add new data to table
-//        bisectionList.add(new TableBisectionModel("2", "1", "2", "34", "3","3","3"));
+        Integer i = 1;
+
+        // Reset Table
+        table.getItems().clear();
+
+        // Get Fields
         String formula_text = formula_input.getText();
         BigDecimal precision= new BigDecimal(precision_input.getText());
         String assumption_xl = assumption_xl_input.getText();
         String assumption_xr= assumption_xr_input.getText();
+        Integer scale = Integer.parseInt(decimal_input.getText());
 
-
-        // Evaluate if assumptions are valid
         // Define Formula
         formula_text = "f(x) = " + formula_text;
         Function f= new Function(formula_text);
 
         // Evaluate xl
         String arg = "x = " + assumption_xl;
-        Argument xl = new Argument(arg);
-        Expression e1 = new Expression("f(x)", f, xl);
-        BigDecimal yl = new BigDecimal(e1.calculate());
-        //mXparser.consolePrintln(e1.getExpressionString() + "=" + e1.calculate());
+        Argument xl_arg = new Argument(arg);
+        Expression e1 = new Expression("f(x)", f, xl_arg);
+        BigDecimal yl = new BigDecimal(e1.calculate()).setScale(scale, RoundingMode.HALF_UP);
+//        mXparser.consolePrintln(e1.getExpressionString() + "=" + e1.calculate());
 
         // Evaluate xr
         arg = "x = " + assumption_xr;
-        Argument xr = new Argument(arg);
-        Expression e2 = new Expression("f(x)", f, xr);
-        BigDecimal yr = new BigDecimal(e2.calculate());
-        // mXparser.consolePrintln(e2.getExpressionString() + "=" + e2.calculate());
+        Argument xr_arg = new Argument(arg);
+        Expression e2 = new Expression("f(x)", f, xr_arg);
+        BigDecimal yr = new BigDecimal(e2.calculate()).setScale(scale, RoundingMode.HALF_UP);;
+//         mXparser.consolePrintln(e2.getExpressionString() + "=" + e2.calculate());
 
         //Compare yl and yr sign
         if (!validateAssumptions(yl, yr) ) {
             System.out.println("not valid");
         } else {
             System.out.println("valid");
-        }
 
+            // Get xm - midpoint
+            BigDecimal xl = new BigDecimal(assumption_xl);
+            BigDecimal xr = new BigDecimal(assumption_xr);
+            BigDecimal xm = xl.add(xr).divide(new BigDecimal("2"), scale, RoundingMode.HALF_UP);
+
+            // Evaluate ym
+            arg = "x = " + xm.toString();
+            Argument xm_arg = new Argument(arg);
+            Expression e3 = new Expression("f(x)", f, xm_arg);
+            BigDecimal ym = new BigDecimal(e3.calculate()).setScale(scale, RoundingMode.HALF_UP);
+
+            // Init First Row
+            bisectionList.add(new TableBisectionModel(i.toString(), xl.toString(), xm.toString(), xr.toString(), yl.toString(),ym.toString(),yr.toString()));
+            i++;
+
+            // 2 to n iteration
+            // TODO - MODIFY THE ITERATION STOP POINT C<0.001
+            while (xr.subtract(xl).compareTo(precision) > 0){
+                // Move columns
+                int ymSign = (int) getSign(ym);
+
+                if (ymSign == getSign(yl)) {
+                    yl = ym;
+                    xl = xm;
+                } else if (ymSign == getSign(yr)) {
+                    yr = ym;
+                    xr = xm;
+                }
+
+                xm = xl.add(xr).divide(BigDecimal.valueOf(2), scale, RoundingMode.HALF_UP);
+
+                // Evaluate ym
+                arg = "x = " + xm.toString();
+                xm_arg = new Argument(arg);
+                e3 = new Expression("f(x)", f, xm_arg);
+                ym = new BigDecimal(e3.calculate()).setScale(scale, RoundingMode.HALF_UP);;
+
+                bisectionList.add(new TableBisectionModel(i.toString(), xl.toString(), xm.toString(), xr.toString(), yl.toString(),ym.toString(),yr.toString()));
+
+                i++;
+            }
+
+            // Set roots
+            root_x_input.setText(xm.toString());
+            root_y_input.setText("0");
+        }
     }
 
 
