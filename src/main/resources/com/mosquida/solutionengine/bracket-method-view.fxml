@@ -13,21 +13,16 @@
 <AnchorPane prefHeight="768.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.BracketMethod">
    <children>
       <Label layoutX="37.0" layoutY="49.0" text="Formula" />
-      <TextField fx:id="formula" layoutX="87.0" layoutY="45.0" prefHeight="25.0" prefWidth="260.0" />
+      <TextField fx:id="formula_input" layoutX="87.0" layoutY="45.0" prefHeight="25.0" prefWidth="260.0" text="(x^3) + (3x^2) + (12x) + 8" />
       <Button layoutX="33.0" layoutY="228.0" mnemonicParsing="false" onAction="#onSolveClick" prefHeight="25.0" prefWidth="76.0" text="Solve" />
       <Label layoutX="37.0" layoutY="150.0" text="Assumptions" />
       <Label layoutX="37.0" layoutY="179.0" text="xL" />
-      <TextField fx:id="assumption_xl" layoutX="58.0" layoutY="175.0" prefHeight="25.0" prefWidth="94.0" />
+      <TextField fx:id="assumption_xl_input" layoutX="58.0" layoutY="175.0" prefHeight="25.0" prefWidth="94.0" text="-1" />
       <Label layoutX="167.0" layoutY="179.0" text="xR" />
-      <TextField fx:id="assumption_xr" layoutX="191.0" layoutY="175.0" prefHeight="25.0" prefWidth="94.0" />
+      <TextField fx:id="assumption_xr_input" layoutX="191.0" layoutY="175.0" prefHeight="25.0" prefWidth="94.0" text="0" />
       <Label layoutX="37.0" layoutY="106.0" text="Precision" />
-      <TextField fx:id="precision" layoutX="90.0" layoutY="102.0" prefHeight="25.0" prefWidth="260.0" />
-      <TextField editable="false" layoutX="359.0" layoutY="33.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text=" (x**3) + (3*x**2) + (12*x) + 8 instead of ">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </TextField>
-      <TextField editable="false" layoutX="363.0" layoutY="58.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="x^3 + 3x^2 + 12x + 8">
+      <TextField fx:id="precision_input" layoutX="90.0" layoutY="102.0" prefHeight="25.0" prefWidth="260.0" text="4" />
+      <TextField editable="false" layoutX="362.0" layoutY="45.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="Example: (x^3) + (3x^2) + (12x) + 8">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
@@ -63,8 +58,8 @@
       </Label>
       <Label layoutX="334.0" layoutY="179.0" text="x" />
       <Label layoutX="457.0" layoutY="179.0" text="y" />
-      <TextField fx:id="root_x" editable="false" layoutX="347.0" layoutY="175.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" text="x^3 + 3x^2 + 12x + 8" />
-      <TextField fx:id="root_y" editable="false" layoutX="467.0" layoutY="175.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" text="x^3 + 3x^2 + 12x + 8" />
+      <TextField fx:id="root_x_input" editable="false" layoutX="347.0" layoutY="175.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" text="x^3 + 3x^2 + 12x + 8" />
+      <TextField fx:id="root_y_input" editable="false" layoutX="467.0" layoutY="175.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" text="x^3 + 3x^2 + 12x + 8" />
       <Label layoutX="35.0" layoutY="531.0" text="Falsi Method Iteration Table" />
       <VBox layoutX="34.0" layoutY="559.0" prefHeight="175.0" prefWidth="533.0">
          <children>
