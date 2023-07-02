@@ -111,7 +111,7 @@ public class BracketMethod implements Initializable {
         BigDecimal precision= new BigDecimal(precision_input.getText());
         String assumption_xl = assumption_xl_input.getText();
         String assumption_xr= assumption_xr_input.getText();
-        Integer scale = Integer.parseInt(decimal_input.getText());
+        int scale = Integer.parseInt(decimal_input.getText());
 
         // Define Formula
         formula_text = "f(x) = " + formula_text;
@@ -154,7 +154,7 @@ public class BracketMethod implements Initializable {
 
             // 2 to n iteration
             // TODO - MODIFY THE ITERATION STOP POINT C<0.001
-            while (xr.subtract(xl).compareTo(precision) > 0){
+            while (xr.subtract(xl).abs().compareTo(precision) > 0){
                 // Move columns
                 int ymSign = (int) getSign(ym);
 
