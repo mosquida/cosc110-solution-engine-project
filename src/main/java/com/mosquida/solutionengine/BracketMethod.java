@@ -77,6 +77,23 @@ public class BracketMethod implements Initializable {
         table.setItems(bisectionList);
     }
 
+    public static int getSign(BigDecimal number) {
+        return number.compareTo(BigDecimal.ZERO) < 0 ? -1 : 1;
+    }
+
+    public static boolean validateAssumptions(BigDecimal yl, BigDecimal yr) {
+        int ylSign = getSign(yl);
+        int yrSign = getSign(yr);
+
+        // yields same signs
+        if (ylSign == yrSign) {
+            return false;
+        }
+
+        // yields diff sign
+        return true;
+    }
+
     @FXML
     void onSolveClick() {
         // Sample Add new data to table
@@ -96,15 +113,23 @@ public class BracketMethod implements Initializable {
         String arg = "x = " + assumption_xl;
         Argument xl = new Argument(arg);
         Expression e1 = new Expression("f(x)", f, xl);
-        mXparser.consolePrintln(e1.getExpressionString() + "=" + e1.calculate());
+        BigDecimal yl = new BigDecimal(e1.calculate());
+        //mXparser.consolePrintln(e1.getExpressionString() + "=" + e1.calculate());
 
         // Evaluate xr
         arg = "x = " + assumption_xr;
         Argument xr = new Argument(arg);
         Expression e2 = new Expression("f(x)", f, xr);
-        mXparser.consolePrintln(e2.getExpressionString() + "=" + e2.calculate());
+        BigDecimal yr = new BigDecimal(e2.calculate());
+        // mXparser.consolePrintln(e2.getExpressionString() + "=" + e2.calculate());
 
         //Compare yl and yr sign
+        if (!validateAssumptions(yl, yr) ) {
+            System.out.println("not valid");
+        } else {
+            System.out.println("valid");
+        }
+
     }
 
 

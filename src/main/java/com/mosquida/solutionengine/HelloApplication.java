@@ -13,15 +13,9 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         boolean isCallSuccessful = License.iConfirmNonCommercialUse("Carl Justine Mosquida");
-
-        /* Verification if use type has been already confirmed */
-        boolean isConfirmed = License.checkIfUseTypeConfirmed();
-
         /* Checking use type confirmation message */
         String message = License.getUseTypeConfirmationMessage();
 
-        mXparser.consolePrintln("isCallSuccessful = " + isCallSuccessful);
-        mXparser.consolePrintln("isConfirmed = " + isConfirmed);
         mXparser.consolePrintln("message = " + message);
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
