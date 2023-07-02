@@ -40,25 +40,21 @@
       <Label layoutX="35.0" layoutY="289.0" text="Bisection Method Iteration Table" />
 
        <VBox layoutX="34.0" layoutY="317.0" prefHeight="175.0" prefWidth="533.0" xmlns:fx="http://javafx.com/fxml/1">
-           <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="400.0" prefWidth="533.0">
-            <content>
-               <AnchorPane prefHeight="172.0" prefWidth="531.0" style="-fx-background-color: #fff;">
-                  <children>
-                     <TableView fx:id="tbData" prefHeight="175.0" prefWidth="518.0">
-                        <columns>
-                           <TableColumn fx:id="bisection_id" prefWidth="75.0" text="i" />
-                           <TableColumn fx:id="bisection_xl" prefWidth="75.0" text="xL" />
-                           <TableColumn fx:id="bisection_xm" prefWidth="75.0" text="xM" />
-                           <TableColumn fx:id="bisection_xr" prefWidth="75.0" text="xR" />
-                           <TableColumn fx:id="bisection_yl" prefWidth="75.0" text="yL" />
-                           <TableColumn fx:id="bisection_ym" prefWidth="75.0" text="yM" />
-                           <TableColumn fx:id="bisection_yr" prefWidth="75.0" text="yR" />
-                        </columns>
-                     </TableView>
-                  </children>
-               </AnchorPane>
-            </content>
-           </ScrollPane>
+         <AnchorPane prefHeight="172.0" prefWidth="531.0" style="-fx-background-color: #fff;">
+            <children>
+               <TableView fx:id="table" prefHeight="175.0" prefWidth="533.0">
+                  <columns>
+                     <TableColumn fx:id="bisection_id" prefWidth="75.0" text="i" />
+                     <TableColumn fx:id="bisection_xl" prefWidth="75.0" text="xL" />
+                     <TableColumn fx:id="bisection_xm" prefWidth="75.0" text="xM" />
+                     <TableColumn fx:id="bisection_xr" prefWidth="75.0" text="xR" />
+                     <TableColumn fx:id="bisection_yl" prefWidth="75.0" text="yL" />
+                     <TableColumn fx:id="bisection_ym" prefWidth="75.0" text="yM" />
+                     <TableColumn fx:id="bisection_yr" prefWidth="75.0" text="yR" />
+                  </columns>
+               </TableView>
+            </children>
+         </AnchorPane>
        </VBox>
       <Label layoutX="334.0" layoutY="150.0" text="Roots">
          <font>
