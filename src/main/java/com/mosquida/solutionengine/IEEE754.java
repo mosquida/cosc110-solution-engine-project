@@ -2,7 +2,6 @@ package com.mosquida.solutionengine;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextField;
 
 public class IEEE754 {
     @FXML
@@ -74,8 +73,19 @@ public class IEEE754 {
     // Numerics only allowed in text-field
     public void initialize() {
         decimalInput.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.matches("\\d*")) return;
-            decimalInput.setText(newValue.replaceAll("[^\\d]", ""));
+//            if (newValue.matches("\\d*")) return;
+//            decimalInput.setText(newValue.replaceAll("[^\\d]", ""));
+            // Allow digits and hyphen only
+            if (newValue.matches("^-?\\d*")) {
+                // Allow optional "-" sign at the beginning and digits
+                return;
+            } else if (newValue.matches("^-\\d+")) {
+                // Allow "-" sign at the beginning followed by digits
+                decimalInput.setText(newValue);
+            } else {
+                // Remove any "-" sign after the first digit or "-"
+                decimalInput.setText(oldValue);
+            }
         });
     }
 }
