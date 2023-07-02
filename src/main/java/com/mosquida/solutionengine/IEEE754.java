@@ -73,9 +73,6 @@ public class IEEE754 {
     // Numerics only allowed in text-field
     public void initialize() {
         decimalInput.textProperty().addListener((observable, oldValue, newValue) -> {
-//            if (newValue.matches("\\d*")) return;
-//            decimalInput.setText(newValue.replaceAll("[^\\d]", ""));
-            // Allow digits and hyphen only
             if (newValue.matches("^-?\\d*")) {
                 // Allow optional "-" sign at the beginning and digits
                 return;
