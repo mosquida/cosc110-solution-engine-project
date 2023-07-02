@@ -83,17 +83,28 @@ public class BracketMethod implements Initializable {
 //        bisectionList.add(new TableBisectionModel("2", "1", "2", "34", "3","3","3"));
         String formula_text = formula_input.getText();
         BigDecimal precision= new BigDecimal(precision_input.getText());
-        BigDecimal assumption_xl = new BigDecimal(assumption_xl_input.getText());
-        BigDecimal assumption_xr= new BigDecimal(assumption_xr_input.getText());
+        String assumption_xl = assumption_xl_input.getText();
+        String assumption_xr= assumption_xr_input.getText();
 
 
         // Evaluate if assumptions are valid
-            //xl abd xr on formula eval
+        // Define Formula
         formula_text = "f(x) = " + formula_text;
         Function f= new Function(formula_text);
-        Argument x = new Argument("x = 3");
-        Expression e = new Expression("f(x)", f, x);
-        mXparser.consolePrintln(e.getExpressionString() + "=" + e.calculate());
+
+        // Evaluate xl
+        String arg = "x = " + assumption_xl;
+        Argument xl = new Argument(arg);
+        Expression e1 = new Expression("f(x)", f, xl);
+        mXparser.consolePrintln(e1.getExpressionString() + "=" + e1.calculate());
+
+        // Evaluate xr
+        arg = "x = " + assumption_xr;
+        Argument xr = new Argument(arg);
+        Expression e2 = new Expression("f(x)", f, xr);
+        mXparser.consolePrintln(e2.getExpressionString() + "=" + e2.calculate());
+
+        //Compare yl and yr sign
     }
 
 
