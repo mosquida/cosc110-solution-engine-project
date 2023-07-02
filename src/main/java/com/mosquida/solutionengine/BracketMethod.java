@@ -61,7 +61,9 @@ public class BracketMethod implements Initializable {
     @FXML
     void onSolveClick() {
         // Sample Add new data to table
-        bisectionList.add(new TableBisectionModel("1", "1", "2", "34", "3","3","3")
+        bisectionList.add(new TableBisectionModel("2", "1", "2", "34", "3","3","3")
         );
     }
+
+    
 }
