@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -27,7 +26,7 @@
             <Font name="System Italic" size="10.0" />
          </font>
       </TextField>
-      <TextField editable="false" layoutX="362.0" layoutY="83.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="Tolerance level, example 0.0001">
+      <TextField editable="false" layoutX="362.0" layoutY="83.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="Tolerance level, 0.0001 and below only">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
@@ -58,35 +57,41 @@
       </Label>
       <Label layoutX="334.0" layoutY="190.0" text="x" />
       <Label layoutX="457.0" layoutY="190.0" text="y" />
-      <TextField fx:id="root_x_input" editable="false" layoutX="347.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" text="x^3 + 3x^2 + 12x + 8" />
-      <TextField fx:id="root_y_input" editable="false" layoutX="467.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" text="x^3 + 3x^2 + 12x + 8" />
+      <TextField fx:id="root_x_input" editable="false" layoutX="347.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" />
+      <TextField fx:id="root_y_input" editable="false" layoutX="467.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" />
       <Label layoutX="35.0" layoutY="531.0" text="Falsi Method Iteration Table" />
       <VBox layoutX="34.0" layoutY="559.0" prefHeight="175.0" prefWidth="533.0">
          <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="400.0" prefWidth="533.0">
-               <content>
-                  <AnchorPane prefHeight="172.0" prefWidth="531.0" style="-fx-background-color: #fff;">
-                     <children>
-                        <TableView prefHeight="175.0" prefWidth="518.0">
-                           <columns>
-                              <TableColumn prefWidth="75.0" text="i" />
-                              <TableColumn prefWidth="75.0" text="xL" />
-                              <TableColumn prefWidth="75.0" text="xM" />
-                              <TableColumn prefWidth="75.0" text="xR" />
-                              <TableColumn prefWidth="75.0" text="yL" />
-                              <TableColumn prefWidth="75.0" text="yM" />
-                              <TableColumn prefWidth="75.0" text="yR" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
+            <AnchorPane prefHeight="172.0" prefWidth="531.0" style="-fx-background-color: #fff;">
+               <children>
+                  <TableView fx:id="table2" prefHeight="175.0" prefWidth="533.0">
+                     <columns>
+                        <TableColumn fx:id="falsi_id" prefWidth="75.0" text="i" />
+                        <TableColumn fx:id="falsi_xl" prefWidth="75.0" text="xL" />
+                        <TableColumn fx:id="falsi_xm" prefWidth="75.0" text="xM" />
+                        <TableColumn fx:id="falsi_xr" prefWidth="75.0" text="xR" />
+                        <TableColumn fx:id="falsi_yl" prefWidth="75.0" text="yL" />
+                        <TableColumn fx:id="falsi_ym" prefWidth="75.0" text="yM" />
+                        <TableColumn fx:id="falsi_yr" prefWidth="82.0" text="yR" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
       <Label layoutX="36.0" layoutY="126.0" text="Decimals" />
       <TextField fx:id="decimal_input" layoutX="89.0" layoutY="122.0" prefHeight="25.0" prefWidth="260.0" text="4" />
       <TextField editable="false" layoutX="361.0" layoutY="122.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="Rounding numbers, 4 and up only">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </TextField>
+      <TextField editable="false" layoutX="363.0" layoutY="96.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: transparent;" text="are currently supported">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </TextField>
+      <TextField editable="false" layoutX="362.0" layoutY="135.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: transparent;" text="are currently supported">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
