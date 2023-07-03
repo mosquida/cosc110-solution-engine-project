@@ -133,8 +133,19 @@ public class BracketMethod implements Initializable {
         return true;
     }
 
-    public static boolean countZerosInPrecision(BigDecimal number) {
-        int targetPrecision = 4;
+    public  boolean countZerosInPrecision(BigDecimal number) {
+        int targetPrecision = 1;
+        String p= precision_input.getText();
+        String decimal = p.split("\\.")[1];
+        for (char digit : decimal.toCharArray()) {
+            if (digit == '0') {
+                targetPrecision++;
+            } else {
+                break;
+            }
+        }
+
+
         String numberStr = number.toString();
         String decimalPart = numberStr.split("\\.")[1];
 
@@ -147,7 +158,7 @@ public class BracketMethod implements Initializable {
             }
         }
 
-        if (count + 1 == targetPrecision) {
+        if (count + 1 >= targetPrecision) {
             return false;
         }
 
@@ -225,8 +236,9 @@ public class BracketMethod implements Initializable {
             i++;
 
             // 2 to n iteration
-            // TODO - MODIFY THE ITERATION STOP POINT C<0.001
-            while (xr.subtract(xl).abs().compareTo(precision) > 0){
+            // TODO - MODIFY THE ITERATION STOP POINT - check if r1 is equal to r2 then stop before print, must save ref
+            // xr.subtract(xl).abs().compareTo(precision) > 0
+            while (i < 100){
                 // Move columns
                 int ymSign = (int) getSign(ym);
 
@@ -329,7 +341,7 @@ public class BracketMethod implements Initializable {
             // 2 to n iteration
             // TODO - MODIFY THE ITERATION STOP POINT C<0.001
 
-            while (countZerosInPrecision(ym)){
+            while (i< 100){
                 System.out.println(ym.abs().compareTo(precision));
                 System.out.println(ym.abs());
                 System.out.println(precision);

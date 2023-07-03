@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mosquida.solutionengine.NewtonRaphsonMethod"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="478.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.NewtonRaphsonMethod">
+   <children>
+      <Label layoutX="34.0" layoutY="59.0" text="Formula" />
+      <TextField fx:id="formula_input" layoutX="97.0" layoutY="55.0" prefHeight="25.0" prefWidth="297.0" text="x^3 + 3x^2 + 12x + 8" />
+      <TextField editable="false" layoutX="405.0" layoutY="55.0" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: #fff;" text="Example: x^3 + 3x^2 + 12x + 8">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </TextField>
+      <Label layoutX="34.0" layoutY="125.0" text="x old" />
+      <TextField layoutX="83.0" layoutY="121.0" prefHeight="25.0" prefWidth="94.0" text="0" fx:id="xOld" />
+      <Label layoutX="35.0" layoutY="235.0" text="Newton Rhapson Iteration Table" />
+      <VBox layoutX="34.0" layoutY="263.0" prefHeight="175.0" prefWidth="533.0">
+         <children>
+            <AnchorPane prefHeight="172.0" prefWidth="531.0" style="-fx-background-color: #fff;">
+               <children>
+                  <TableView fx:id="table" prefHeight="175.0" prefWidth="533.0">
+                     <columns>
+                        <TableColumn fx:id="nr_id" prefWidth="75.0" text="i" />
+                        <TableColumn fx:id="nr_xn" prefWidth="112.0" text="xN" />
+                        <TableColumn fx:id="nr_xo" prefWidth="110.0" text="xO" />
+                        <TableColumn fx:id="nr_yn" prefWidth="110.0" text="yN" />
+                        <TableColumn fx:id="nr_yo" prefWidth="125.0" text="yO" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Button layoutX="34.0" layoutY="169.0" mnemonicParsing="false" onAction="#onSolveClick" prefHeight="25.0" prefWidth="76.0" text="Solve" />
+      <Label layoutX="410.0" layoutY="125.0" text="Root">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="root_x_input" editable="false" layoutX="450.0" layoutY="121.0" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #eee;" />
+      <Label layoutX="33.0" layoutY="99.0" text="Assumption">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
