@@ -9,7 +9,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.mariuszgromada.math.mxparser.Argument;
+import org.mariuszgromada.math.mxparser.Expression;
+import org.mariuszgromada.math.mxparser.Function;
+import org.mariuszgromada.math.mxparser.mXparser;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -57,7 +63,48 @@ public class NewtonRaphsonMethod implements Initializable {
     
     @FXML
     void onSolveClick() {
-        NRList.add(new TableNRModel("1", "2", "2", "3", "4"));
+        Integer i = 1;
+        String formula_text = formula_input.getText();
+        BigDecimal x_old = new BigDecimal(xOld.getText());
 
+        // Define Formula
+        formula_text = "f(x) = " + formula_text;
+        Function f= new Function(formula_text);
+
+        // TODO - Add stopping point at 0.0001, look at bracket method
+        while(i < 100) {
+            Argument x_arg = new Argument("x = " + x_old.toString());
+            Expression func = new Expression("f(x)", f, x_arg);
+
+            String der_func = "der(" + formula_input.getText() + ", x)";
+            Expression derivative = new Expression(der_func, x_arg);
+
+            double f_x_old = func.calculate();
+            double f_prime_x_old = derivative.calculate();
+
+            BigDecimal yo = BigDecimal.valueOf(f_x_old).setScale(4, RoundingMode.HALF_UP);
+
+            if (f_prime_x_old == 0) {
+                System.out.println("Division by zero occurred. Exiting the iteration.");
+                break;
+            }
+
+            // Calculate xn
+            double fractionValue = f_prime_x_old != 0 ? yo.divide(BigDecimal.valueOf(f_prime_x_old), 4, RoundingMode.HALF_UP).doubleValue() : 0.0;
+            BigDecimal fraction = BigDecimal.valueOf(fractionValue);
+            BigDecimal xn = x_old.subtract(fraction);
+
+
+            Argument xn_arg = new Argument("x = " + xn.toString());
+            Expression func2 = new Expression("f(x)", f, xn_arg);
+            BigDecimal yn = new BigDecimal(func2.calculate()).setScale(4, RoundingMode.HALF_UP);;
+
+
+            NRList.add(new TableNRModel(i.toString(), xn.toString(),  x_old.toString(), yn.toString(), yo.toString()));
+
+            // Update x_old for next iteration
+            x_old = xn;
+            i++;
+        }
     }
 }

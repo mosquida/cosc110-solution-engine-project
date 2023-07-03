@@ -12,14 +12,14 @@
 <AnchorPane prefHeight="478.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.NewtonRaphsonMethod">
    <children>
       <Label layoutX="34.0" layoutY="59.0" text="Formula" />
-      <TextField fx:id="formula_input" layoutX="97.0" layoutY="55.0" prefHeight="25.0" prefWidth="297.0" text="x^3 + 3x^2 + 12x + 8" />
+      <TextField fx:id="formula_input" layoutX="97.0" layoutY="55.0" prefHeight="25.0" prefWidth="297.0" text="x^2 - x - 1" />
       <TextField editable="false" layoutX="405.0" layoutY="55.0" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: #fff;" text="Example: x^3 + 3x^2 + 12x + 8">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
       </TextField>
       <Label layoutX="34.0" layoutY="125.0" text="x old" />
-      <TextField layoutX="83.0" layoutY="121.0" prefHeight="25.0" prefWidth="94.0" text="0" fx:id="xOld" />
+      <TextField layoutX="83.0" layoutY="121.0" prefHeight="25.0" prefWidth="94.0" text="2" fx:id="xOld" />
       <Label layoutX="35.0" layoutY="235.0" text="Newton Rhapson Iteration Table" />
       <VBox layoutX="34.0" layoutY="263.0" prefHeight="175.0" prefWidth="533.0">
          <children>
