@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mosquida.solutionengine.SecantMethod"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="489.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.SecantMethod">
+   <children>
+      <TextField fx:id="formula_input" layoutX="97.0" layoutY="62.0" prefHeight="25.0" prefWidth="297.0" text="x^2 - x - 1" />
+      <TextField editable="false" layoutX="405.0" layoutY="62.0" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: #fff;" text="Example: x^2 - x - 1">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </TextField>
+      <Label layoutX="34.0" layoutY="132.0" text="xA" />
+      <TextField layoutX="56.0" layoutY="128.0" prefHeight="25.0" prefWidth="94.0" text="2" fx:id="xa" />
+      <Label layoutX="35.0" layoutY="242.0" text="Secant Iteration Table" />
+      <VBox layoutX="34.0" layoutY="270.0" prefHeight="175.0" prefWidth="533.0">
+         <children>
+            <AnchorPane prefHeight="172.0" prefWidth="531.0" style="-fx-background-color: #fff;">
+               <children>
+                  <TableView fx:id="table" prefHeight="175.0" prefWidth="533.0">
+                     <columns>
+                        <TableColumn fx:id="secant_id" prefWidth="63.0" text="i" />
+                        <TableColumn fx:id="secant_xa" prefWidth="78.0" text="xA" />
+                        <TableColumn fx:id="secant_xb" prefWidth="78.0" text="xB" />
+                        <TableColumn fx:id="secant_xn" prefWidth="78.0" text="xN" />
+                        <TableColumn fx:id="secant_ya" prefWidth="78.0" text="yA" />
+                        <TableColumn fx:id="secant_yb" prefWidth="78.0" text="yB" />
+                        <TableColumn fx:id="secant_yn" prefWidth="78.0" text="yN" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Label layoutX="34.0" layoutY="66.0" text="Formula" />
+      <Label layoutX="420.0" layoutY="132.0" text="Root">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="root_x_input" editable="false" layoutX="455.0" layoutY="128.0" prefHeight="25.0" prefWidth="112.0" style="-fx-background-color: #eee;" />
+      <Label layoutX="35.0" layoutY="103.0" text="Assumption">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="172.0" layoutY="132.0" text="xB" />
+      <TextField layoutX="194.0" layoutY="128.0" prefHeight="25.0" prefWidth="94.0" text="3" fx:id="xb" />
+      <Button layoutX="31.0" layoutY="178.0" mnemonicParsing="false" onAction="#onSolveClick" prefHeight="25.0" prefWidth="76.0" text="Solve" />
+   </children>
 </AnchorPane>

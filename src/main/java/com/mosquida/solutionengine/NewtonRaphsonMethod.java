@@ -106,5 +106,7 @@ public class NewtonRaphsonMethod implements Initializable {
             x_old = xn;
             i++;
         }
+
+        root_x_input.setText(x_old.toString());
     }
 }
