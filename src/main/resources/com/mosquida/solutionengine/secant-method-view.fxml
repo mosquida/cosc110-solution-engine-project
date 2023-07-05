@@ -18,7 +18,7 @@
          </font>
       </TextField>
       <Label layoutX="34.0" layoutY="132.0" text="xA" />
-      <TextField layoutX="56.0" layoutY="128.0" prefHeight="25.0" prefWidth="94.0" text="2" fx:id="xa" />
+      <TextField layoutX="56.0" layoutY="128.0" prefHeight="25.0" prefWidth="94.0" text="2" fx:id="xa_input" />
       <Label layoutX="35.0" layoutY="242.0" text="Secant Iteration Table" />
       <VBox layoutX="34.0" layoutY="270.0" prefHeight="175.0" prefWidth="533.0">
          <children>
@@ -52,7 +52,7 @@
          </font>
       </Label>
       <Label layoutX="172.0" layoutY="132.0" text="xB" />
-      <TextField layoutX="194.0" layoutY="128.0" prefHeight="25.0" prefWidth="94.0" text="3" fx:id="xb" />
+      <TextField layoutX="194.0" layoutY="128.0" prefHeight="25.0" prefWidth="94.0" text="3" fx:id="xb_input" />
       <Button layoutX="31.0" layoutY="178.0" mnemonicParsing="false" onAction="#onSolveClick" prefHeight="25.0" prefWidth="76.0" text="Solve" />
    </children>
 </AnchorPane>
