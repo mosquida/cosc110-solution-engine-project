@@ -9,31 +9,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.BracketMethod">
+<AnchorPane prefHeight="706.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.BracketMethod">
    <children>
       <Label layoutX="37.0" layoutY="49.0" text="Formula" />
       <TextField fx:id="formula_input" layoutX="87.0" layoutY="45.0" prefHeight="25.0" prefWidth="260.0" text="x^3 + 3x^2 + 12x + 8" />
-      <Button layoutX="33.0" layoutY="228.0" mnemonicParsing="false" onAction="#onSolveClick" prefHeight="25.0" prefWidth="76.0" text="Solve" />
-      <Label layoutX="37.0" layoutY="161.0" text="Assumptions" />
-      <Label layoutX="37.0" layoutY="190.0" text="xL" />
-      <TextField fx:id="assumption_xl_input" layoutX="58.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" text="-1" />
-      <Label layoutX="167.0" layoutY="190.0" text="xR" />
-      <TextField fx:id="assumption_xr_input" layoutX="191.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" text="0" />
-      <Label layoutX="36.0" layoutY="87.0" text="Precision" />
-      <TextField fx:id="precision_input" layoutX="89.0" layoutY="83.0" prefHeight="25.0" prefWidth="260.0" text="0.0001" />
+      <Button layoutX="33.0" layoutY="165.0" mnemonicParsing="false" onAction="#onSolveClick" prefHeight="25.0" prefWidth="76.0" text="Solve" />
+      <Label layoutX="37.0" layoutY="98.0" text="Assumptions" />
+      <Label layoutX="37.0" layoutY="127.0" text="xL" />
+      <TextField fx:id="assumption_xl_input" layoutX="58.0" layoutY="123.0" prefHeight="25.0" prefWidth="94.0" text="-1" />
+      <Label layoutX="167.0" layoutY="127.0" text="xR" />
+      <TextField fx:id="assumption_xr_input" layoutX="191.0" layoutY="123.0" prefHeight="25.0" prefWidth="94.0" text="0" />
       <TextField editable="false" layoutX="362.0" layoutY="45.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="Example: x^3 + 3x^2 + 12x + 8">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
       </TextField>
-      <TextField editable="false" layoutX="362.0" layoutY="83.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="Tolerance level, 0.0001 and below only">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </TextField>
-      <Label layoutX="35.0" layoutY="289.0" text="Bisection Method Iteration Table" />
+      <Label layoutX="35.0" layoutY="226.0" text="Bisection Method Iteration Table" />
 
-       <VBox layoutX="34.0" layoutY="317.0" prefHeight="175.0" prefWidth="533.0" xmlns:fx="http://javafx.com/fxml/1">
+       <VBox layoutX="34.0" layoutY="254.0" prefHeight="175.0" prefWidth="533.0" xmlns:fx="http://javafx.com/fxml/1">
          <AnchorPane prefHeight="172.0" prefWidth="531.0" style="-fx-background-color: #fff;">
             <children>
                <TableView fx:id="table" prefHeight="175.0" prefWidth="533.0">
@@ -50,17 +43,17 @@
             </children>
          </AnchorPane>
        </VBox>
-      <Label layoutX="334.0" layoutY="161.0" text="Roots">
+      <Label layoutX="334.0" layoutY="98.0" text="Roots">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="334.0" layoutY="190.0" text="x" />
-      <Label layoutX="457.0" layoutY="190.0" text="y" />
-      <TextField fx:id="root_x_input" editable="false" layoutX="347.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" />
-      <TextField fx:id="root_y_input" editable="false" layoutX="467.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" />
-      <Label layoutX="35.0" layoutY="531.0" text="Falsi Method Iteration Table" />
-      <VBox layoutX="34.0" layoutY="559.0" prefHeight="175.0" prefWidth="533.0">
+      <Label layoutX="334.0" layoutY="127.0" text="x" />
+      <Label layoutX="457.0" layoutY="127.0" text="y" />
+      <TextField fx:id="root_x_input" editable="false" layoutX="347.0" layoutY="123.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" />
+      <TextField fx:id="root_y_input" editable="false" layoutX="467.0" layoutY="123.0" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #eee;" />
+      <Label layoutX="35.0" layoutY="468.0" text="Falsi Method Iteration Table" />
+      <VBox layoutX="34.0" layoutY="496.0" prefHeight="175.0" prefWidth="533.0">
          <children>
             <AnchorPane prefHeight="172.0" prefWidth="531.0" style="-fx-background-color: #fff;">
                <children>
@@ -79,22 +72,5 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Label layoutX="36.0" layoutY="126.0" text="Decimals" />
-      <TextField fx:id="decimal_input" layoutX="89.0" layoutY="122.0" prefHeight="25.0" prefWidth="260.0" text="4" />
-      <TextField editable="false" layoutX="361.0" layoutY="122.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #fff;" text="Rounding numbers, 4 and up only">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </TextField>
-      <TextField editable="false" layoutX="363.0" layoutY="96.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: transparent;" text="are currently supported">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </TextField>
-      <TextField editable="false" layoutX="362.0" layoutY="135.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: transparent;" text="are currently supported">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </TextField>
    </children>
 </AnchorPane>

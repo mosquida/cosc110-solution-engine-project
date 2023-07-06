@@ -22,12 +22,6 @@ public class BracketMethod implements Initializable {
     private TextField formula_input;
 
     @FXML
-    private TextField precision_input;
-
-    @FXML
-    private TextField decimal_input;
-
-    @FXML
     private TextField root_x_input;
 
     @FXML
@@ -133,38 +127,6 @@ public class BracketMethod implements Initializable {
         return true;
     }
 
-    public  boolean countZerosInPrecision(BigDecimal number) {
-        int targetPrecision = 1;
-        String p= precision_input.getText();
-        String decimal = p.split("\\.")[1];
-        for (char digit : decimal.toCharArray()) {
-            if (digit == '0') {
-                targetPrecision++;
-            } else {
-                break;
-            }
-        }
-
-
-        String numberStr = number.toString();
-        String decimalPart = numberStr.split("\\.")[1];
-
-        int count = 0;
-        for (char digit : decimalPart.toCharArray()) {
-            if (digit == '0') {
-                count++;
-            } else {
-                break;
-            }
-        }
-
-        if (count + 1 >= targetPrecision) {
-            return false;
-        }
-
-        return true;
-    }
-
     @FXML
     void onSolveClick() {
         solveBisection();
@@ -182,19 +144,10 @@ public class BracketMethod implements Initializable {
 
         // Get Fields
         String formula_text = formula_input.getText();
-        BigDecimal precision= new BigDecimal(precision_input.getText());
         String assumption_xl = assumption_xl_input.getText();
         String assumption_xr= assumption_xr_input.getText();
-        int scale = Integer.parseInt(decimal_input.getText());
-        if (scale < 4) {
-            scale = 4;
-            decimal_input.setText("4");
-        }
+        int scale = 4;
 
-        if (precision.compareTo(new BigDecimal(0.0001)) < 0) {
-            precision_input.setText("0.0001");
-            precision= new BigDecimal(precision_input.getText());
-        }
 
         // Define Formula
         formula_text = "f(x) = " + formula_text;
@@ -225,6 +178,10 @@ public class BracketMethod implements Initializable {
             BigDecimal xr = new BigDecimal(assumption_xr);
             BigDecimal xm = xl.add(xr).divide(new BigDecimal("2"), scale, RoundingMode.HALF_UP);
 
+            BigDecimal xl_old = new BigDecimal(Double.MAX_VALUE);
+            BigDecimal xr_old = new BigDecimal(Double.MAX_VALUE);
+            BigDecimal xm_old = new BigDecimal(Double.MAX_VALUE);
+
             // Evaluate ym
             arg = "x = " + xm.toString();
             Argument xm_arg = new Argument(arg);
@@ -238,7 +195,7 @@ public class BracketMethod implements Initializable {
             // 2 to n iteration
             // TODO - MODIFY THE ITERATION STOP POINT - check if r1 is equal to r2 then stop before print, must save ref
             // xr.subtract(xl).abs().compareTo(precision) > 0
-            while (i < 100){
+            while (true){
                 // Move columns
                 int ymSign = (int) getSign(ym);
 
@@ -258,9 +215,16 @@ public class BracketMethod implements Initializable {
                 e3 = new Expression("f(x)", f, xm_arg);
                 ym = new BigDecimal(e3.calculate()).setScale(scale, RoundingMode.HALF_UP);;
 
+                if (xr.equals(xr_old) && xl.equals(xl_old) && xm.equals(xm_old)) {
+                    break;
+                }
+
                 bisectionList.add(new TableBisectionModel(i.toString(), xl.toString(), xm.toString(), xr.toString(), yl.toString(),ym.toString(),yr.toString()));
 
                 i++;
+                xm_old = xm;
+                xl_old = xl;
+                xr_old = xr;
             }
 
             // Set roots
@@ -277,19 +241,10 @@ public class BracketMethod implements Initializable {
 
         // Get Fields
         String formula_text = formula_input.getText();
-        BigDecimal precision= new BigDecimal(precision_input.getText());
         String assumption_xl = assumption_xl_input.getText();
         String assumption_xr= assumption_xr_input.getText();
-        int scale = Integer.parseInt(decimal_input.getText());
-        if (scale < 4) {
-            scale = 4;
-            decimal_input.setText("4");
-        }
+        int scale = 4;
 
-        if (precision.compareTo(new BigDecimal(0.0001)) < 0) {
-            precision_input.setText("0.0001");
-            precision= new BigDecimal(precision_input.getText());
-        }
 
         // Define Formula
         formula_text = "f(x) = " + formula_text;
@@ -300,15 +255,12 @@ public class BracketMethod implements Initializable {
         Argument xl_arg = new Argument(arg);
         Expression e1 = new Expression("f(x)", f, xl_arg);
         BigDecimal yl = new BigDecimal(e1.calculate()).setScale(scale, RoundingMode.HALF_UP);
-//        mXparser.consolePrintln(e1.getExpressionString() + "=" + e1.calculate());
-        System.out.println(yl);
+
         // Evaluate xr
         arg = "x = " + assumption_xr;
         Argument xr_arg = new Argument(arg);
         Expression e2 = new Expression("f(x)", f, xr_arg);
         BigDecimal yr = new BigDecimal(e2.calculate()).setScale(scale, RoundingMode.HALF_UP);;
-//         mXparser.consolePrintln(e2.getExpressionString() + "=" + e2.calculate());
-        System.out.println(yr);
 
         //Compare yl and yr sign
         if (!validateAssumptions(yl, yr) ) {
@@ -331,8 +283,10 @@ public class BracketMethod implements Initializable {
             Argument xm_arg = new Argument(arg);
             Expression e3 = new Expression("f(x)", f, xm_arg);
             BigDecimal ym = new BigDecimal(e3.calculate()).setScale(scale, RoundingMode.HALF_UP);
-            System.out.println(ym);
 
+            BigDecimal xl_old = xl;
+            BigDecimal xr_old = xr;
+            BigDecimal xm_old = xm;
 
             // Init First Row
             falsiList.add(new TableFalsiModel(i.toString(), xl.toString(), xm.toString(), xr.toString(), yl.toString(),ym.toString(),yr.toString()));
@@ -341,10 +295,7 @@ public class BracketMethod implements Initializable {
             // 2 to n iteration
             // TODO - MODIFY THE ITERATION STOP POINT C<0.001
 
-            while (i< 100){
-                System.out.println(ym.abs().compareTo(precision));
-                System.out.println(ym.abs());
-                System.out.println(precision);
+            while (true){
                 // Move columns
                 int ymSign = (int) getSign(ym);
 
@@ -368,8 +319,15 @@ public class BracketMethod implements Initializable {
                 e3 = new Expression("f(x)", f, xm_arg);
                 ym = new BigDecimal(e3.calculate()).setScale(scale, RoundingMode.HALF_UP);;
 
+                if(xl.equals(xl_old) && xr.equals(xr_old) && xm.equals(xm_old)) {
+                    break;
+                }
+
                 falsiList.add(new TableFalsiModel(i.toString(), xl.toString(), xm.toString(), xr.toString(), yl.toString(),ym.toString(),yr.toString()));
 
+                xl_old = xl;
+                xr_old = xr;
+                xm_old = xm;
                 i++;
             }
 
