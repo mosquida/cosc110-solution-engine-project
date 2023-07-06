@@ -101,7 +101,6 @@ public class JacobiMethod implements Initializable {
 
         Integer i = 0;
 
-        // TODO - CHANGE THE SIGN
         String a1 = a1_input.getText(); ///
         String b1 = reverseSign(new BigDecimal(b1_input.getText()));
         String c1 = reverseSign(new BigDecimal(c1_input.getText()));
@@ -127,7 +126,6 @@ public class JacobiMethod implements Initializable {
         BigDecimal y_new = new BigDecimal(Double.MAX_VALUE);
         BigDecimal z_new = new BigDecimal(Double.MAX_VALUE);
 
-        // TODO - add stopping point
         while (true) {
 
             String r1_formula = String.format("( (%s) +  (%s)y +  (%s)z)/ (%s)",d1, b1, c1, a1 );

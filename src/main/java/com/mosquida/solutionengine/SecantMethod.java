@@ -85,17 +85,19 @@ public class SecantMethod implements Initializable {
         System.out.println(xa_input.getText());
         BigDecimal xa = new BigDecimal(xa_input.getText());
         BigDecimal xb = new BigDecimal(xb_input.getText());
-
         BigDecimal xn = null;
         BigDecimal ya;
         BigDecimal yb;
         BigDecimal yn;
 
+        BigDecimal xa_old = new BigDecimal(Double.MAX_VALUE);
+        BigDecimal xb_old = new BigDecimal(Double.MAX_VALUE);
+        BigDecimal xn_old = new BigDecimal(Double.MAX_VALUE);
+
         // Define Formula
         formula_text = "f(x) = " + formula_text;
         Function f= new Function(formula_text);
 
-        // TODO - Add stopping point at 0.0001, look at bracket method
         while(i < 100) {
             System.out.println("a" + xa);
             System.out.println("b" + xb);
@@ -141,7 +143,16 @@ public class SecantMethod implements Initializable {
             xa = xb;
             xb = xn;
 
+            if(xa.equals(xa_old) && xb.equals(xb_old) && xn.equals(xn_old)) {
+                break;
 
+            }
+
+            xa_old = xa;
+            xb_old = xb;
+            xn_old = xn;
+
+            
             i++;
         }
 
