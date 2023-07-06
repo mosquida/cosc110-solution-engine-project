@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -20,6 +21,9 @@ import org.mariuszgromada.math.mxparser.*;
 public class BracketMethod implements Initializable {
     @FXML
     private TextField formula_input;
+
+    @FXML
+    private Label valid;
 
     @FXML
     private TextField root_x_input;
@@ -169,9 +173,9 @@ public class BracketMethod implements Initializable {
 
         //Compare yl and yr sign
         if (!validateAssumptions(yl, yr) ) {
-            System.out.println("not valid");
+            valid.setText("Invalid, try other");
         } else {
-            System.out.println("valid");
+            valid.setText("Valid");
 
             // Get xm - midpoint
             BigDecimal xl = new BigDecimal(assumption_xl);
@@ -193,8 +197,6 @@ public class BracketMethod implements Initializable {
             i++;
 
             // 2 to n iteration
-            // TODO - MODIFY THE ITERATION STOP POINT - check if r1 is equal to r2 then stop before print, must save ref
-            // xr.subtract(xl).abs().compareTo(precision) > 0
             while (true){
                 // Move columns
                 int ymSign = (int) getSign(ym);

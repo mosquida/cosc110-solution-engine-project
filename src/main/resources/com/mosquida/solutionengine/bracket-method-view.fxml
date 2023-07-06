@@ -14,7 +14,7 @@
       <Label layoutX="37.0" layoutY="49.0" text="Formula" />
       <TextField fx:id="formula_input" layoutX="87.0" layoutY="45.0" prefHeight="25.0" prefWidth="260.0" text="x^3 + 3x^2 + 12x + 8" />
       <Button layoutX="33.0" layoutY="165.0" mnemonicParsing="false" onAction="#onSolveClick" prefHeight="25.0" prefWidth="76.0" text="Solve" />
-      <Label layoutX="37.0" layoutY="98.0" text="Assumptions" />
+      <Label layoutX="37.0" layoutY="98.0" text="Assumption:" />
       <Label layoutX="37.0" layoutY="127.0" text="xL" />
       <TextField fx:id="assumption_xl_input" layoutX="58.0" layoutY="123.0" prefHeight="25.0" prefWidth="94.0" text="-1" />
       <Label layoutX="167.0" layoutY="127.0" text="xR" />
@@ -72,5 +72,10 @@
             </AnchorPane>
          </children>
       </VBox>
+      <Label fx:id="valid" layoutX="110.0" layoutY="99.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
