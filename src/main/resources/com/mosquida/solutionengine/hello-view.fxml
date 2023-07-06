@@ -5,23 +5,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="428.0" prefWidth="347.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.HelloController">
+<AnchorPane prefHeight="470.0" prefWidth="347.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.HelloController">
    <children>
-      <Label layoutX="12.0" layoutY="61.0" text="Decimal to IEEE754">
+      <Label layoutX="46.0" layoutY="63.0" text="Decimal to IEEE754">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="41.0" layoutY="209.0" onAction="#onBracketMethodClick" text="Bisection and False Position Method" />
-      <Button layoutX="42.0" layoutY="91.0" onAction="#onIEEEConvertClick" text="Single and Double Precision" />
-      <Label layoutX="14.0" layoutY="153.0" text="Root Finding">
+      <Button layoutX="75.0" layoutY="211.0" onAction="#onBracketMethodClick" text="Bisection and False Position Method" />
+      <Button layoutX="76.0" layoutY="93.0" onAction="#onIEEEConvertClick" text="Single and Double Precision" />
+      <Label layoutX="48.0" layoutY="155.0" text="Root Finding">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="180.0" text="Bracket Method" />
-      <Label layoutX="41.0" layoutY="265.0" text="Open Method" />
-      <Button layoutX="42.0" layoutY="292.0" onAction="#onNewtonRaphsonClick" text="Newton Raphson Method" />
-      <Button layoutX="42.0" layoutY="325.0" onAction="#onSecantClick" text="Secant Method" />
+      <Label layoutX="75.0" layoutY="182.0" text="Bracket Method" />
+      <Label layoutX="75.0" layoutY="267.0" text="Open Method" />
+      <Button layoutX="76.0" layoutY="294.0" onAction="#onNewtonRaphsonClick" text="Newton Raphson Method" />
+      <Button layoutX="76.0" layoutY="327.0" onAction="#onSecantClick" text="Secant Method" />
+      <Label layoutX="48.0" layoutY="372.0" text="Solving systems of linear equation">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="76.0" layoutY="399.0" onAction="#onJacobiClick" text="Jacobi Method" />
    </children>
 </AnchorPane>
