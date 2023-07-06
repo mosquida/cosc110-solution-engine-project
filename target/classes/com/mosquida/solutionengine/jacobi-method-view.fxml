@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="612.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mosquida.solutionengine.JacobiMethod">
    <children>
       <Button layoutX="35.0" layoutY="326.0" mnemonicParsing="false" onAction="#onSolveClick" prefHeight="25.0" prefWidth="76.0" text="Solve" />
@@ -107,11 +106,11 @@
          </font>
       </Label>
       <Label layoutX="40.0" layoutY="271.0" text="x" />
-      <TextField fx:id="a1_input1" layoutX="53.0" layoutY="266.0" prefHeight="25.0" prefWidth="76.0" text="0" />
+      <TextField fx:id="guess1" layoutX="53.0" layoutY="266.0" prefHeight="25.0" prefWidth="76.0" text="0" />
       <Label layoutX="144.0" layoutY="271.0" text="y" />
-      <TextField fx:id="a1_input11" layoutX="156.0" layoutY="266.0" prefHeight="25.0" prefWidth="76.0" text="0" />
+      <TextField fx:id="guess2" layoutX="156.0" layoutY="266.0" prefHeight="25.0" prefWidth="76.0" text="0" />
       <Label layoutX="244.0" layoutY="271.0" text="z" />
-      <TextField fx:id="a1_input12" layoutX="256.0" layoutY="266.0" prefHeight="25.0" prefWidth="76.0" text="0" />
+      <TextField fx:id="guess3" layoutX="256.0" layoutY="266.0" prefHeight="25.0" prefWidth="76.0" text="0" />
       <Label layoutX="32.0" layoutY="56.0" text=" Ordering must be already in diagonal dominant form" textFill="#908d8d">
          <font>
             <Font name="System Italic" size="11.0" />

@@ -66,6 +66,15 @@ public class JacobiMethod implements Initializable {
     private TextField root_z_input;
 
     @FXML
+    private TextField guess1;
+
+    @FXML
+    private TextField guess2;
+
+    @FXML
+    private TextField guess3;
+
+    @FXML
     private TableColumn<JacobiModel, String> jacobi_id;
 
     @FXML
@@ -118,9 +127,9 @@ public class JacobiMethod implements Initializable {
         String d3 = d3_input.getText(); ///
 
 
-        BigDecimal x = new BigDecimal(0);
-        BigDecimal y = new BigDecimal(0);
-        BigDecimal z = new BigDecimal(0);
+        BigDecimal x = new BigDecimal(guess1.getText());
+        BigDecimal y = new BigDecimal(guess2.getText());
+        BigDecimal z = new BigDecimal(guess3.getText());
 
         BigDecimal x_new = new BigDecimal(Double.MAX_VALUE);
         BigDecimal y_new = new BigDecimal(Double.MAX_VALUE);
