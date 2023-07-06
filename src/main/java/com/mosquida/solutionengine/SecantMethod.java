@@ -77,6 +77,8 @@ public class SecantMethod implements Initializable {
 
     @FXML
     void onSolveClick() {
+        // Reset Table
+        table.getItems().clear();
 
         Integer i = 1;
         String formula_text = formula_input.getText();
