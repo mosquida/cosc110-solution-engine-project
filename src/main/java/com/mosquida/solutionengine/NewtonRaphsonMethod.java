@@ -69,6 +69,10 @@ public class NewtonRaphsonMethod implements Initializable {
         Integer i = 1;
         String formula_text = formula_input.getText();
         BigDecimal x_old = new BigDecimal(xOld.getText());
+        BigDecimal xn;
+
+        BigDecimal x_old_previous = new BigDecimal(Double.MAX_VALUE);
+        BigDecimal xn_previous = new BigDecimal(Double.MAX_VALUE);
 
         // Define Formula
         formula_text = "f(x) = " + formula_text;
@@ -95,19 +99,27 @@ public class NewtonRaphsonMethod implements Initializable {
             // Calculate xn
             double fractionValue = f_prime_x_old != 0 ? yo.divide(BigDecimal.valueOf(f_prime_x_old), 4, RoundingMode.HALF_UP).doubleValue() : 0.0;
             BigDecimal fraction = BigDecimal.valueOf(fractionValue);
-            BigDecimal xn = x_old.subtract(fraction);
+            xn = x_old.subtract(fraction);
 
 
             Argument xn_arg = new Argument("x = " + xn.toString());
             Expression func2 = new Expression("f(x)", f, xn_arg);
             BigDecimal yn = new BigDecimal(func2.calculate()).setScale(4, RoundingMode.HALF_UP);;
 
+            if (xn.equals(xn_previous) && x_old.equals(x_old_previous)) {
+                break;
+            }
+
 
             NRList.add(new TableNRModel(i.toString(), xn.toString(),  x_old.toString(), yn.toString(), yo.toString()));
 
-            // Update x_old for next iteration
+
+            x_old_previous = x_old;
+            xn_previous = xn;
+
             x_old = xn;
             i++;
+
         }
 
         root_x_input.setText(x_old.toString());

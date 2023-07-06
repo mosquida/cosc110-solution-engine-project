@@ -99,8 +99,7 @@ public class SecantMethod implements Initializable {
         Function f= new Function(formula_text);
 
         while(i < 100) {
-            System.out.println("a" + xa);
-            System.out.println("b" + xb);
+
             Argument a_arg = new Argument("x = " + xa.toString());
             Expression func1 = new Expression("f(x)", f, a_arg);
 
@@ -114,7 +113,6 @@ public class SecantMethod implements Initializable {
             BigDecimal denominator = new BigDecimal(f_a).subtract(new BigDecimal(f_b));
             try {
                 xn = xa.subtract(numerator.divide(denominator, 4, RoundingMode.HALF_UP));
-                System.out.println("n" + xn);
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
